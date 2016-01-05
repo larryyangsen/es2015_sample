@@ -20,31 +20,75 @@
 
         }
         handleClick(text) {
-            let string = `You clicked 
-          `
-            alert(`${string}${text}`);
+            let string = `You clicked the
+`
+            alert(`${string}${text} ` + 'button');
+        }
+    }
+
+    class Person {
+        constructor(name) {
+            this.name = name;
+        }
+        describe() {
+            return "Person called " + this.name;
+        }
+    }
+
+    class Student extends Person { //À^³ÐPerson
+        constructor(name, className) {
+            super(name);
+            this.className = className;
+        }
+        describe() {
+            return `${super.describe()},who is a student in ${this.className}`
         }
     }
 
     const a = [1, 2, 3];
+    const aas = ['a', 'b', 'c'];
+    aas.push(...a); // From apply() to the spread operator (...)
     let [x, y, z] = [3, 2, 1];
     let b = a.map(x => x = x * x);
-    let [, year, month, day] = //ç¬¬ä¸€çµ„ç©ºç™½è®“å›žå‚³çš„é™£åˆ—å¿½ç•¥ç¬¬0å€‹
+    let [, year, month, day] = // µÚÒ»½M¿Õ°××Œ»Ø‚÷µÄê‡ÁÐºöÂÔµÚ0‚€
     /^(\d\d\d\d)-(\d\d)-(\d\d)$/
     .exec('2999-12-31');
 
-    const lines = `dd 
-                  d`
 
-    function print(x, y) {
-
-        alert(`${x}and${y}`)
+    for (let [index, elem] of aas.entries()) {
+        console.log(elem, index);
     }
-    console.log(a, b, lines)
-    print('123', '456')
-
+    console.log([...a, ...aas]) //From concat() to the spread operator (...)
+    var print1 = new print('123', '456');
+    var print2 = new print();
+    var printObj1 = new printObj({ //›]½osecond•r¿É¸ù“þîAÔOÖµ½oÖµ
+        first: 4
+    });
+    printAllArgs(1, 2, 2, 2, 2, 's');
+    console.log(printObj1)
     let myclass = new myClass(4);
     let buttons = new buttonsClass();
+    let personA = new Person('Larry');
+    let studentA = new Student('Larry','MIS');
     myclass.show(2);
+    console.log(personA.describe());
+    console.log(studentA.describe());
 
+    function print(x = '777', y = '888') { //ÓÐîAÔOÖµµÄfunction
+        this.x = x;
+        this.y = y;
+        console.log(`${x}and${y}`)
+    }
+
+    function printObj({
+        first = 1,
+            second = 2
+    }) {
+        this.first = first;
+        this.second = second;
+    }
+
+    function printAllArgs(must, ...args) {
+        console.log(must, args)
+    }
 }
